@@ -11,7 +11,18 @@ const index = (req, res) => {
   })
 }
 
+const show = (req, res) => {
+  db.Playlist.findById(req.params.id, (err, foundPlaylist)=> {
+    if(err) console.log(err)
+
+    if(!foundPlaylist) return res.json({message: 'none found'})
+
+    res.json({ playlist: foundPlaylist })
+  })
+}
+
 
 module.exports = {
-  index
+  index,
+  show
 }
