@@ -1,10 +1,20 @@
 const express = require('express')
-
 const app = express()
-const port = process.env.PORT || 3000
+const mongoose = require('mongoose')
 
-// const routes = require('./routes/index')
-// app.use('/home', routes)
+//set up port
+const port = process.env.PORT || 3001
+
+//require routes
+const routes = require('./routes/index.js')
+
+//db config
+mongoose.connect("mongodb://localhost/p3", { useNewUrlParser: true });
+mongoose.set('useUnifiedTopology', true)
+
+//use routes
+app.use('/', routes)
+
 
 app.listen(port, () => {
     console.log(`We're in ${port}, lets do this`)
