@@ -2,16 +2,14 @@ const mongoose = require ('mongoose')
 const Schema = mongoose.Schema
 
 const PlaylistSchema = new Schema ({
-    title: {
-        type: String
-    },
-    posts: {
+    title: String,
+    posts: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'post'
-    },
-    coverart: {
-        type: String
-    }
+      }
+    ],
+    coverart: String
 })
 
 const Playlist = mongoose.model('Playlist', PlaylistSchema)
