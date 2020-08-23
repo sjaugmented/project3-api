@@ -1,7 +1,7 @@
-const Playlist = require('./models/playlist')
+const db = require('./models')
 
 const data = {
-  playlists: [
+  "playlists": [
   {
     title: 'Electronic',
     converart: 'https://graphicriver.img.customer.envatousercontent.com/files/254513373/albumcover-artwork-templates-bundle3-preview.jpg?auto=compress%2Cformat&fit=crop&crop=top&w=590&h=590&s=369a30083246bb801ee4d196f43ec4ce'
@@ -31,8 +31,8 @@ const data = {
 
 
 
-Playlist.deleteMany({}, (err, deletedPlaylists)=> {
-  Playlist.create(data.playlists, (err, seededPlaylists) => {
+db.Playlist.deleteMany({}, (err, deletedPlaylists)=> {
+  db.Playlist.create(data.playlists, (err, seededPlaylists) => {
     if(err) console.log(err)
 
     console.log(data.length)
@@ -40,3 +40,9 @@ Playlist.deleteMany({}, (err, deletedPlaylists)=> {
     process.exit()
   })
 })
+
+// Playlist.create(
+//   {title: 'Indie', coverart: 'https://i.pinimg.com/originals/dc/75/62/dc75620a85349b109b529e0f555897ca.jpg'}, (err, createdPlay)=>{
+//   if(err) console.log(err)
+//   createdPlay.save()
+// })

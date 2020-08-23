@@ -1,24 +1,20 @@
 const express = require('express')
-const app = express()
 const mongoose = require('mongoose')
 
 
 //set up port
 const port = process.env.PORT || 3001
-
+const app = express()
 
 //require routes
-const routes = require('./routes/index.js')
+const routes = require('./routes')
 
-//db config
-mongoose.connect("mongodb://localhost/p3", { useNewUrlParser: true });
-mongoose.set('useUnifiedTopology', true)
 
 // middleware - JSON parsing
 app.use(express.json());
 
 //use routes
-app.use('/', routes)
+app.use('/api/v1/playlists', routes.playlists)
 
 
 app.listen(port, () => {
