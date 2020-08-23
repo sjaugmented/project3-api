@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
+
 
 
 //set up port
@@ -11,6 +13,7 @@ const routes = require('./routes')
 
 
 // middleware - JSON parsing
+app.use(cors())
 app.use(express.json());
 
 //use routes

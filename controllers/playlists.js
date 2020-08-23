@@ -1,10 +1,13 @@
 const db = require('../models')
 
 const index = (req, res) => {
-  db.Playlist.find({}, (err, foundPlaylist) => {
+  db.Playlist.find({}, (err, foundPlaylists) => {
     if(err) console.log("error")
 
-    res.send("AYYYY")
+    if(!foundPlaylists.length){
+      return res.json({message: 'No playlists found'})
+    }
+    res.json({playlists: foundPlaylists})
   })
 }
 
