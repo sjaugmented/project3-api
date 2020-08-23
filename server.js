@@ -1,10 +1,24 @@
 const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
 
+
+
+//set up port
+const port = process.env.PORT || 3001
 const app = express()
-const port = process.env.PORT || 3000
 
-// const routes = require('./routes/index')
-// app.use('/home', routes)
+//require routes
+const routes = require('./routes')
+
+
+// middleware - JSON parsing
+app.use(cors())
+app.use(express.json());
+
+//use routes
+app.use('/api/v1/playlists', routes.playlists)
+
 
 app.listen(port, () => {
     console.log(`We're in ${port}, lets do this`)

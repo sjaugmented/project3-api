@@ -1,5 +1,3 @@
-const router = require('express').Router()
-
-router.get('/', (req, res) => {
-    res.render('Objective Secure')
-})
+module.exports = {
+  playlists: require('./playlists')
+}
