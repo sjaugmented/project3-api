@@ -87,8 +87,8 @@ const callback = (req, res) => {
 
                 // use the access token to access the Spotify Web API
                 request.get(options, function (error, response, body) {
-                    console.log('userData:', body);
-                    console.log('userID:', body.id)
+                    console.log('userData:', body); // TODO: remove
+                    console.log('userID:', body.id) // TODO: remove
                 });
 
                 // we can also pass the token to the browser to make requests from there
