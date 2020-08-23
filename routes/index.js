@@ -1,5 +1,4 @@
-const router = require('express').Router()
-
-router.get('/', (req, res) => {
-    res.render('Objective Secure')
-})
+module.exports = {
+    test: require('./test'),
+    spotify: require('./spotify')
+}
