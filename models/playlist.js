@@ -6,7 +6,7 @@ const PlaylistSchema = new Schema ({
     posts: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'post'
+        ref: 'Post'
       }
     ],
     coverart: String
