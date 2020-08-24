@@ -19,14 +19,17 @@ const PORT = process.env.PORT || 3001
 app.use(express.json())
 
 // CORS
-app.use(cors()).use(cookieParser())
+app.use(cors({
+    origin: ['http://localhost:3000'],
+    credentials: true,
+    optionsSuccessStatus: 200
+}))
 
 // passport & sessions
 app.use(session({
     secret: 'I am mustard',
     resave: false,
     saveUninitialized: false,
-    resave: false,
     store: new MongoStore({
         url: process.env.MONGODB_URI || "mongodb://localhost:27017/p3"
     }),

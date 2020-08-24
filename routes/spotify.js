@@ -27,4 +27,6 @@ router.get('/callback', passport.authenticate('spotify', {
 
 router.get('/logout', ctrl.spotify.logout)
 
+router.get('/verify', ctrl.spotify.verify)
+
 module.exports = router

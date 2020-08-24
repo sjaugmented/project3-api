@@ -5,6 +5,8 @@ const login = (req, res) => {
 }
 const callback = (req, res) => {
     // Successful authentication, redirect home.
+    console.log('session:', req.session)
+    console.log('user:', req.user)
     res.redirect('http://localhost:3000/')
 }
 
@@ -13,4 +15,18 @@ const logout = (req, res) => {
     res.redirect('http://localhost:3000/')
 }
 
-module.exports = { login, callback, logout }
+const verify = (req, res) => {
+    console.log(req.user)
+    if (req.user) {
+        res.json({
+            spotifyId: req.user.spotifyId,
+            name: req.user.name,
+            token: req.user.token
+        })
+    }
+    res.json({
+        message: 'not logged in'
+    })
+}
+
+module.exports = { login, callback, logout, verify }
