@@ -1,23 +1,32 @@
 const router = require('express').Router()
 const passport = require('passport')
+const ctrl = require('../controllers')
+
+const scope = [
+    'user-read-email',
+    'user-read-private',
+    'user-library-modify',
+    'user-read-playback-state',
+    'playlist-modify-public',
+    'playlist-modify-private',
+    'user-top-read'
+]
 
 router.get('/login', passport.authenticate('spotify', {
-        scope: ['user-read-email', 'user-read-private'],
+        scope: scope,
         showDialog: true
     }),
-    function (req, res) {
-        // The request will be redirected to spotify for authentication, so this
-        // function will not be called.
-    }
+    ctrl.spotify.login
 )
 
 router.get('/callback', passport.authenticate('spotify', {
         failureRedirect: '/api/v1/auth/login'
     }),
-    function (req, res) {
-        // Successful authentication, redirect home.
-        res.redirect('http://localhost:3000/');
-    }
+    ctrl.spotify.callback
 )
+
+router.get('/logout', ctrl.spotify.logout)
+
+router.get('/verify', ctrl.spotify.verify)
 
 module.exports = router
