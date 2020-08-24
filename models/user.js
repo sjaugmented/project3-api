@@ -9,10 +9,11 @@ const UserSchema = new Schema({
     name: {
         type: String
     }, 
-    loggedIn: {
-        type: Boolean
-        //Will be used to display users that are online
+    token: {
+        type: String,
+        required: true
     },
+    loggedIn: Boolean,
     posts: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'post'

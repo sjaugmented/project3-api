@@ -4,7 +4,6 @@ const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const cookieParser = require('cookie-parser');
-const mongoose = require('mongoose')
 const passport = require('passport')
 
 
@@ -20,13 +19,21 @@ const app = express()
 app.use(express.json())
 
 // CORS
-app.use(cors()).use(cookieParser())
+app.use(cors({
+    origin: ['http://localhost:3000'],
+    credentials: true,
+    optionsSuccessStatus: 200
+}))
 
 // passport & sessions
 app.use(session({
     secret: 'I am mustard',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: new MongoStore({
+        url: process.env.MONGODB_URI || "mongodb://localhost:27017/p3"
+    }),
+    cookie: {maxAge: 1000 * 60 * 60 * 24}
 }))
 app.use(passport.initialize())
 app.use(passport.session())
