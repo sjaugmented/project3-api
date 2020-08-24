@@ -23,10 +23,11 @@ const verify = (req, res) => {
             name: req.user.name,
             token: req.user.token
         })
+    } else {
+        res.json({
+            message: 'no user'
+        })
     }
-    res.json({
-        message: 'not logged in'
-    })
 }
 
 module.exports = { login, callback, logout, verify }
