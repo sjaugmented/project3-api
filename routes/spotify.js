@@ -20,4 +20,9 @@ router.get('/callback', passport.authenticate('spotify', {
     }
 )
 
+router.get('/logout', (req, res) => {
+    req.logout()
+    res.redirect('http://localhost:3000/api/v1')
+})
+
 module.exports = router
