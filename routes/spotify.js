@@ -2,8 +2,18 @@ const router = require('express').Router()
 const passport = require('passport')
 const ctrl = require('../controllers')
 
+const scope = [
+    'user-read-email',
+    'user-read-private',
+    'user-library-modify',
+    'user-read-playback-state',
+    'playlist-modify-public',
+    'playlist-modify-private',
+    'user-top-read'
+]
+
 router.get('/login', passport.authenticate('spotify', {
-        scope: ['user-read-email', 'user-read-private'],
+        scope: scope,
         showDialog: true
     }),
     ctrl.spotify.login
