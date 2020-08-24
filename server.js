@@ -3,29 +3,39 @@ const routes = require('./routes')
 const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose')
+const passport = require('passport')
 
 
+require('./passport/spotifyStrategy')
 
 
 //set up port
 const app = express()
 const PORT = process.env.PORT || 3001
 
-// middleware - JSON parsing
+//#region MIDDLEWARE
+// JSON parsing
 app.use(express.json())
 
-// middleware - CORS config?
+// CORS
 app.use(cors()).use(cookieParser())
 
-// middleware - sessions config?
+// passport & sessions
+app.use(session({
+    secret: 'I am mustard',
+    resave: false,
+    saveUninitialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+//#endregion
+
+// routes
 app.use('/api/v1', routes.playlists)
 app.use('/api/v1/auth', routes.spotify)
 
-app.use('/', (req, res) => {
-    res.send('Ready')
-})
 app.listen(PORT, () => {
     console.log(`We're in ${PORT}, lets do this`)
 })
