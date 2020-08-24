@@ -10,9 +10,8 @@ const mongoose = require('mongoose')
 
 
 //set up port
-const port = process.env.PORT || 3001
-const app = express()
 const PORT = process.env.PORT || 3001
+const app = express()
 
 // middleware - JSON parsing
 app.use(express.json())
@@ -24,9 +23,7 @@ app.use(cors()).use(cookieParser())
 app.use('/api/v1', routes.playlists)
 app.use('/api/v1/auth', routes.spotify)
 
-app.use('/', (req, res) => {
-    res.send('Ready')
-})
+
 app.listen(PORT, () => {
     console.log(`We're in ${PORT}, lets do this`)
 })
