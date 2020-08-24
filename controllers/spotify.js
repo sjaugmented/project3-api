@@ -1,10 +1,17 @@
 const querystring = require('querystring');
 const request = require('request')
+const client_url = 'http://localhost:3000/#'
 
 
+<<<<<<< HEAD
 const client_id = '3dfb23664b73446abdb76ccb50b15c0e' // Your client id
 const client_secret = 'e29b4852ce444bb29a99f925eac5f98f' // Your secret
 const redirect_uri = 'http://localhost:3001/api/v1/auth/callback/' // Your redirect uri
+=======
+const client_id = '3dfb23664b73446abdb76ccb50b15c0e' // Larry client id
+const client_secret = 'e29b4852ce444bb29a99f925eac5f98f' // Larry secret
+const redirect_uri = 'http://localhost:3001/api/v1/auth/callback/' // Larry redirect uri
+>>>>>>> ccfb696f1094d733764dde097e5e8477b3410e85
 
 /**
  * Generates a random string containing numbers and letters
@@ -52,7 +59,7 @@ const callback = (req, res) => {
     const storedState = req.cookies ? req.cookies[stateKey] : null;
 
     if (state === null || state !== storedState) {
-        res.redirect('/#' +
+        res.redirect(client_url +
             querystring.stringify({
                 error: 'state_mismatch'
             }));
@@ -83,21 +90,22 @@ const callback = (req, res) => {
                         'Authorization': 'Bearer ' + access_token
                     },
                     json: true
-                };
+                }
 
                 // use the access token to access the Spotify Web API
                 request.get(options, function (error, response, body) {
-                    console.log(body);
+                    console.log('userData:', body); // TODO: remove
+                    console.log('userID:', body.id) // TODO: remove
                 });
 
                 // we can also pass the token to the browser to make requests from there
-                res.redirect('/#' +
+                res.redirect(client_url +
                     querystring.stringify({
                         access_token: access_token,
                         refresh_token: refresh_token
                     }));
             } else {
-                res.redirect('/#' +
+                res.redirect(client_url +
                     querystring.stringify({
                         error: 'invalid_token'
                     }));
