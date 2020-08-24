@@ -3,15 +3,9 @@ const request = require('request')
 const client_url = 'http://localhost:3000/#'
 
 
-<<<<<<< HEAD
-const client_id = '3dfb23664b73446abdb76ccb50b15c0e' // Your client id
-const client_secret = 'e29b4852ce444bb29a99f925eac5f98f' // Your secret
-const redirect_uri = 'http://localhost:3001/api/v1/auth/callback/' // Your redirect uri
-=======
 const client_id = '3dfb23664b73446abdb76ccb50b15c0e' // Larry client id
 const client_secret = 'e29b4852ce444bb29a99f925eac5f98f' // Larry secret
 const redirect_uri = 'http://localhost:3001/api/v1/auth/callback/' // Larry redirect uri
->>>>>>> ccfb696f1094d733764dde097e5e8477b3410e85
 
 /**
  * Generates a random string containing numbers and letters
