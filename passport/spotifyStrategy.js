@@ -15,6 +15,7 @@ passport.use(
                     if (user) {
                         user.name = profile.displayName
                         user.token = refreshToken
+                        user.accessToken = accessToken
                         user.loggedIn = true
                         user.save(function (err) {
                             return done(null, user)
