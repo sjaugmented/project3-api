@@ -5,8 +5,6 @@ const login = (req, res) => {
 }
 const callback = (req, res) => {
     // Successful authentication, redirect home.
-    console.log('session:', req.session)
-    console.log('user:', req.user)
     res.redirect('http://localhost:3000/')
 }
 
