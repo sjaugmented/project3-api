@@ -21,7 +21,7 @@ const verify = (req, res) => {
         res.json({
             spotifyId: req.user.spotifyId,
             name: req.user.name,
-            token: req.user.token
+            accessToken: req.user.accessToken
         })
     } else {
         res.json({

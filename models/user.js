@@ -13,6 +13,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    accessToken: String,
     loggedIn: Boolean,
     posts: [{
         type: mongoose.Schema.Types.ObjectId,
