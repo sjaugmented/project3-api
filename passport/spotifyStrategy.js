@@ -4,9 +4,9 @@ const User = require('../models/user')
 
 passport.use(
     new SpotifyStrategy({
-            clientID: '3dfb23664b73446abdb76ccb50b15c0e',
-            clientSecret: 'e29b4852ce444bb29a99f925eac5f98f',
-            callbackURL: 'http://localhost:3001/api/v1/auth/callback/'
+            clientID: process.env.SPOT_CLIENT_ID,
+            clientSecret: process.env.SPOT_CLIENT_SECRET,
+            callbackURL: process.env.SPOT_CALLBACK
         },
         function (accessToken, refreshToken, expires_in, profile, done) {
             User.findOne({
@@ -19,8 +19,6 @@ passport.use(
                         user.save(function (err) {
                             return done(null, user)
                         })
-                        console.log('>>>>>>>>>>>>>>>>>>>>>>>')
-                        console.log('user:', user)
                     } else {
                         // new user!
                         const newUser = new User({
@@ -29,8 +27,6 @@ passport.use(
                             token: refreshToken,
                             loggedIn: true
                         })
-                        console.log('>>>>>>>>>>>>>>>>>>>>>>');
-                        console.log('newUser:', newUser)
                         newUser.save(function (err) {
                             if (err) return done(err)
                             return done(null, newUser)
