@@ -1,4 +1,5 @@
 const express = require('express')
+require('dotenv').config()
 const routes = require('./routes')
 const cors = require('cors')
 const session = require('express-session')
@@ -11,7 +12,7 @@ require('./passport/spotifyStrategy')
 
 
 //set up port
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 const app = express()
 
 //#region MIDDLEWARE
@@ -27,11 +28,11 @@ app.use(cors({
 
 // passport & sessions
 app.use(session({
-    secret: 'I am mustard',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
-        url: process.env.MONGODB_URI || "mongodb://localhost:27017/p3"
+        url: process.env.DATABASE_URL || "mongodb://localhost:27017/p3"
     }),
     cookie: {maxAge: 1000 * 60 * 60 * 24}
 }))
