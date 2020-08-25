@@ -11,8 +11,8 @@ require('./passport/spotifyStrategy')
 
 
 //set up port
-const app = express()
 const PORT = process.env.PORT || 3001
+const app = express()
 
 //#region MIDDLEWARE
 // JSON parsing
