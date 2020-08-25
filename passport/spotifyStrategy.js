@@ -19,8 +19,6 @@ passport.use(
                         user.save(function (err) {
                             return done(null, user)
                         })
-                        console.log('>>>>>>>>>>>>>>>>>>>>>>>')
-                        console.log('user:', user)
                     } else {
                         // new user!
                         const newUser = new User({
@@ -29,8 +27,6 @@ passport.use(
                             token: refreshToken,
                             loggedIn: true
                         })
-                        console.log('>>>>>>>>>>>>>>>>>>>>>>');
-                        console.log('newUser:', newUser)
                         newUser.save(function (err) {
                             if (err) return done(err)
                             return done(null, newUser)
