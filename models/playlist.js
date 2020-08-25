@@ -5,8 +5,13 @@ const PlaylistSchema = new Schema ({
     title: String,
     posts: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Post'
+        song: String, //Spotify songId
+        albumName: String, // Spotfify Id
+        albumArt: String, //??
+        artist: String, //Spotify id
+        votes: Number, 
+        timestamp: Date,
+        contributor: String //Spotify user Id
       }
     ],
     coverart: String
