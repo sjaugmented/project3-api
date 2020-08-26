@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const PostSchema = new Schema({
-    song: String, //Spotify songId
+    songId:{type: String, unique: true},
+    songName: String, //Spotify songId
     albumName: String, // Spotfify Id
     albumArt: String, //??
     artist: String, //Spotify id
