@@ -14,12 +14,13 @@ const logout = (req, res) => {
 }
 
 const verify = (req, res) => {
-    console.log(req.user)
+    console.log('verifying:', req.user)
     if (req.user) {
         res.json({
             spotifyId: req.user.spotifyId,
             name: req.user.name,
-            accessToken: req.user.accessToken
+            refresh: req.user.refresh,
+            access: req.user.access
         })
     } else {
         res.json({

@@ -14,8 +14,8 @@ passport.use(
             }, function (err, user) {
                     if (user) {
                         user.name = profile.displayName
-                        user.token = refreshToken
-                        user.accessToken = accessToken
+                        user.refresh = refreshToken
+                        user.access = accessToken
                         user.loggedIn = true
                         user.save(function (err) {
                             return done(null, user)
@@ -25,7 +25,8 @@ passport.use(
                         const newUser = new User({
                             spotifyId: profile.id,
                             name: profile.displayName,
-                            token: refreshToken,
+                            refresh: refreshToken,
+                            access: accessToken,
                             loggedIn: true
                         })
                         newUser.save(function (err) {
