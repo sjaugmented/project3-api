@@ -12,7 +12,8 @@ const PostSchema = new Schema({
     timestamp: {
         type: Date
     },
-    user: String //Spotify user Id
+    user: String,
+    pending: Boolean //Spotify user Id
 })
 
 const Post = mongoose.model('Post', PostSchema)
