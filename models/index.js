@@ -15,5 +15,6 @@ mongoose.connect(connectionString, configOptions)
 
 module.exports = {
     Playlist: require('./playlist'),
-    User: require('./user')
+    User: require('./user'),
+    Post: require('./post')
 }
