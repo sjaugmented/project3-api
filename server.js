@@ -42,6 +42,7 @@ app.use(passport.session())
 
 // routes
 app.use('/api/v1', routes.playlists)
+app.use('/api/v1/posts', routes.posts)
 app.use('/api/v1/auth', routes.spotify)
 
 app.listen(PORT, () => {
