@@ -3,8 +3,11 @@ const passport = require('passport')
 const ctrl = require('../controllers')
 
 const scope = [
+    'streaming',
     'user-read-email',
     'user-read-private',
+    'user-read-playback-state',
+    'user-modify-playback-state',
     'user-library-modify',
     'user-read-playback-state',
     'playlist-modify-public',
