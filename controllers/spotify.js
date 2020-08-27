@@ -20,7 +20,8 @@ const verify = (req, res) => {
             spotifyId: req.user.spotifyId,
             name: req.user.name,
             refresh: req.user.refresh,
-            access: req.user.access
+            access: req.user.access,
+            admin: req.user.admin
         })
     } else {
         res.json({
