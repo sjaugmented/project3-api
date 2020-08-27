@@ -13,11 +13,14 @@ const index = async (req, res) => {
 }
 
 const create = async (req, res) => {
-  console.log(req.body.body)
+  
     try {
+      const data = await JSON.parse(req.body.body)
+      const createdPost = await db.Post.create(data)
       const foundPlaylist = await db.Playlist.findById(req.params.id)
-      const createdPost = await db.Post.create(req.body)
+      
       foundPlaylist.posts.push(createdPost)
+      createdPost.save()
       foundPlaylist.save()
       await res.json({post: createdPost})
     } catch (error) {
