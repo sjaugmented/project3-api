@@ -26,6 +26,7 @@ const create = async (req, res) => {
 const show = async (req, res) => {
   try {
     const foundPlaylist = await db.Playlist.findById(req.params.id)
+      .populate('posts')
 
     if (!foundPlaylist) return res.json({
       message: 'none found'
