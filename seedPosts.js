@@ -1,11 +1,11 @@
 const db = require('./models')
-const data = require('./postData.json')
+const data = require('./postsCatalogExport.json')
 
 db.Post.deleteMany({}, (err, deletedPosts) => {
-    db.Post.create(data.posts, (err, seededPosts) => {
+    db.Post.create(data, (err, seededPosts) => {
         if (err) console.log(err);
 
-        console.log(data.posts.length, 'posts created successfully');
+        console.log(data.length, 'posts created successfully');
 
         process.exit()
     })
