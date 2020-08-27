@@ -16,14 +16,10 @@ const create = async (req, res) => {
   console.log(req.body.body)
     try {
       const foundPlaylist = await db.Playlist.findById(req.params.id)
-      
       const createdPost = await db.Post.create(req.body)
-      
-        // const foundPlaylist = await db.Playlist.findById(req.body.playlistId)
-        foundPlaylist.posts.push(createdPost)
-        foundPlaylist.save()
-        console.log(foundPlaylist)
-        await res.json({post: createdPost})
+      foundPlaylist.posts.push(createdPost)
+      foundPlaylist.save()
+      await res.json({post: createdPost})
     } catch (error) {
         console.log(error)
     }
