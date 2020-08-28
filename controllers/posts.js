@@ -55,8 +55,8 @@ const destroy = async (req, res) => {
         const foundPlaylist = await db.Playlist.findOne({
             'posts': deletedPost._id
         })
-        console.log('deleting POST from PLAYLIST:', foundPlaylist); // TODO: remove
         if (foundPlaylist) {
+            console.log('deleting POST from PLAYLIST:', foundPlaylist); // TODO: remove
             await foundPlaylist.posts.remove(deletedPost)
             await foundPlaylist.save()
         }
@@ -64,12 +64,12 @@ const destroy = async (req, res) => {
         const foundUser = await db.User.findOne({
             'posts': deletedPost._id
         })
-        console.log('deleting POST from USER:', foundUser) // TODO: remove
         if (foundUser) {
+            console.log('deleting POST from USER:', foundUser) // TODO: remove
             foundUser.posts.remove(deletedPost)
             await foundUser.save()
         }
-        
+
         await res.json({post: deletedPost})
     } catch (error) {
         console.log(error)
