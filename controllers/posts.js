@@ -13,18 +13,35 @@ const index = async (req, res) => {
 }
 
 const create = async (req, res) => {
-  console.log('req.body>>>>', req.body.body)
     try {
         const data = await JSON.parse(req.body.body)
         const createdPost = await db.Post.create(data)
+
         const foundPlaylist = await db.Playlist.findById(req.params.id)
-      
-        // const foundPlaylist = await db.Playlist.findById(req.body.playlistId)
         foundPlaylist.posts.push(createdPost)
-        await createdPost.save()
         await foundPlaylist.save()
-        console.log('foundPlaylist>>>>', foundPlaylist)
+        
+        const foundUser = await db.User.findOne({
+            spotifyId: data.userSpotId
+        })
+        foundUser.posts.push(createdPost)
+        await foundUser.save()
+        
+        await createdPost.save()
         await res.json({post: createdPost})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const update = async (req, res) => {
+    try {
+        const updatedPost = await db.Post.findOneAndUpdate({
+            songId: req.params.songId
+        },
+            req.body,
+            { new: true })
+        await res.json(updatedPost)
     } catch (error) {
         console.log(error)
     }
@@ -77,5 +94,5 @@ const destroy = async (req, res) => {
 }
 
 module.exports = {
-    index, create, show, destroy
+    index, create, update, show, destroy
 }
