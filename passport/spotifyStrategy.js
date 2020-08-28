@@ -27,7 +27,8 @@ passport.use(
                             name: profile.displayName,
                             refresh: refreshToken,
                             access: accessToken,
-                            loggedIn: true
+                            loggedIn: true,
+                            admin: false
                         })
                         newUser.save(function (err) {
                             if (err) return done(err)
