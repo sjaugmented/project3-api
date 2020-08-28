@@ -21,7 +21,8 @@ const verify = (req, res) => {
             name: req.user.name,
             refresh: req.user.refresh,
             access: req.user.access,
-            admin: req.user.admin
+            admin: req.user.admin,
+            posts: req.user.posts
         })
     } else {
         res.json({

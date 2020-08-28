@@ -1,4 +1,5 @@
 const db = require('../models')
+
 const show = async (req, res) => {
     try {
         const foundUser = await db.User.findOne(req.body.name)
@@ -14,4 +15,5 @@ const show = async (req, res) => {
         console.log(error)
     }
 }
-module.exports = show
+
+module.exports = {show}
