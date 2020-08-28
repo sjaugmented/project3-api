@@ -21,8 +21,8 @@ const create = async (req, res) => {
       
         // const foundPlaylist = await db.Playlist.findById(req.body.playlistId)
         foundPlaylist.posts.push(createdPost)
-        createdPost.save()
-        foundPlaylist.save()
+        await createdPost.save()
+        await foundPlaylist.save()
         console.log('foundPlaylist>>>>', foundPlaylist)
         await res.json({post: createdPost})
     } catch (error) {
@@ -36,7 +36,7 @@ const show = async (req, res) => {
         if (!foundPost) return await res.json({
             message: 'No post with that ID'
         })
-        await res.json({game: foundPost})
+        await res.json({post: foundPost})
     } catch (error) {
         console.log(error)
     }
@@ -44,15 +44,32 @@ const show = async (req, res) => {
 
 const destroy = async (req, res) => {
     try {
-        const deletedPost = await db.Post.findByIdAndDelete(req.params.id)
-
+        const deletedPost = await db.Post.findOneAndDelete({
+            songId: req.params.songId
+        })
+        
         if (!deletedPost) return res.json({
             message: 'No post with that ID'
         })
         
-        const foundPlaylist = await db.Playlist.findByIdAndDelete(req.params.id)
-        foundPlaylist.articles.remove(req.params.id)
-        await foundPlaylist.save()
+        const foundPlaylist = await db.Playlist.findOne({
+            'posts': deletedPost._id
+        })
+        console.log('deleting POST from PLAYLIST:', foundPlaylist); // TODO: remove
+        if (foundPlaylist) {
+            await foundPlaylist.posts.remove(deletedPost)
+            await foundPlaylist.save()
+        }
+
+        const foundUser = await db.User.findOne({
+            'posts': deletedPost._id
+        })
+        console.log('deleting POST from USER:', foundUser) // TODO: remove
+        if (foundUser) {
+            foundUser.posts.remove(deletedPost)
+            await foundUser.save()
+        }
+        
         await res.json({post: deletedPost})
     } catch (error) {
         console.log(error)
