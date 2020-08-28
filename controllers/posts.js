@@ -56,7 +56,7 @@ const destroy = async (req, res) => {
             'posts': deletedPost._id
         })
         if (foundPlaylist) {
-            console.log('deleting POST from PLAYLIST:', foundPlaylist); // TODO: remove
+            console.log('deleting POST from PLAYLIST:', foundPlaylist.title); // TODO: remove
             await foundPlaylist.posts.remove(deletedPost)
             await foundPlaylist.save()
         }
@@ -65,7 +65,7 @@ const destroy = async (req, res) => {
             'posts': deletedPost._id
         })
         if (foundUser) {
-            console.log('deleting POST from USER:', foundUser) // TODO: remove
+            console.log('deleting POST from USER:', foundUser.name) // TODO: remove
             foundUser.posts.remove(deletedPost)
             await foundUser.save()
         }
