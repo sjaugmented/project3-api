@@ -13,6 +13,7 @@ const PostSchema = new Schema({
     timestamp: {
         type: Date
     },
+    user: String,
     userSpotId: String,
     pending: Boolean //Spotify user Id
 })
