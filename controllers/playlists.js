@@ -1,17 +1,48 @@
 const db = require('../models')
 
-const index = (req, res) => {
-  db.Playlist.find({}, (err, foundPlaylists) => {
-    if(err) console.log("error")
+const index = async (req, res) => {
+  try {
+    const foundPlaylists = await db.Playlist.find({})
+    if (!foundPlaylists.length) return await res.json({
+      message: 'No playlists found'
+    })
 
-    if(!foundPlaylists.length){
-      return res.json({message: 'No playlists found'})
-    }
-    res.json({playlists: foundPlaylists})
-  })
+    await res.json({playlists: foundPlaylists})
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const create = async (req, res) => {
+  try {
+    const savedPlaylist = await db.Playlist.create(req.body)
+    
+    await res.json({playlist: savedPlaylist})
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const show = async (req, res) => {
+  try {
+    const foundPlaylist = await db.Playlist.findById(req.params.id)
+      .populate('posts')
+
+    if (!foundPlaylist) return res.json({
+      message: 'none found'
+    })
+    
+    await res.json({ playlist: foundPlaylist })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 
+
+
 module.exports = {
-  index
+  index,
+  create,
+  show
 }

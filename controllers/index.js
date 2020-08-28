@@ -1,3 +1,6 @@
 module.exports = {
-  playlists: require('./playlists')
+  playlists: require('./playlists'),
+  spotify: require('./spotify'),
+  posts: require('./posts'),
+  users: require('./users')
 }

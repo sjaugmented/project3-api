@@ -3,12 +3,10 @@ const Schema = mongoose.Schema
 
 const PlaylistSchema = new Schema ({
     title: String,
-    posts: [
-      {
+    posts: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'post'
-      }
-    ],
+        ref: 'Post'
+    }],
     coverart: String
 })
 
