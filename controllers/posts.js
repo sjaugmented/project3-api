@@ -6,25 +6,32 @@ const index = async (req, res) => {
         if (!foundPosts.length) return await res.json({
             message: 'No posts found'
         })
-        await res.json({posts: foundPosts})
+        await res.json({ posts: foundPosts })
     } catch (error) {
         console.log(error)
     }
 }
 
 const create = async (req, res) => {
-  console.log('req.body>>>>', req.body.body)
+    console.log('req.body>>>>', req.body)
     try {
         const data = await JSON.parse(req.body.body)
         const createdPost = await db.Post.create(data)
         const foundPlaylist = await db.Playlist.findById(req.params.id)
-      
+        const foundUser = await db.User.findOne({
+            'name': data.user
+        })
+        console.log("CREATED POST", createdPost)
+        console.log("FOUND USER", data.user)
+
         // const foundPlaylist = await db.Playlist.findById(req.body.playlistId)
         foundPlaylist.posts.push(createdPost)
-        createdPost.save()
-        foundPlaylist.save()
+        foundUser.posts.push(createdPost)
+        await createdPost.save()
+        await foundPlaylist.save()
+        await foundUser.save()
         console.log('foundPlaylist>>>>', foundPlaylist)
-        await res.json({post: createdPost})
+        await res.json({ post: createdPost })
     } catch (error) {
         console.log(error)
     }
@@ -36,7 +43,7 @@ const show = async (req, res) => {
         if (!foundPost) return await res.json({
             message: 'No post with that ID'
         })
-        await res.json({game: foundPost})
+        await res.json({ post: foundPost }) //Why is this labeled as game?
     } catch (error) {
         console.log(error)
     }
@@ -49,11 +56,11 @@ const destroy = async (req, res) => {
         if (!deletedPost) return res.json({
             message: 'No post with that ID'
         })
-        
+
         const foundPlaylist = await db.Playlist.findByIdAndDelete(req.params.id)
         foundPlaylist.articles.remove(req.params.id)
         await foundPlaylist.save()
-        await res.json({post: deletedPost})
+        await res.json({ post: deletedPost })
     } catch (error) {
         console.log(error)
     }

@@ -1,5 +1,5 @@
 const db = require('../models')
-const show = async (req, res) => {
+const showUser = async (req, res) => {
     try {
         const foundUser = await db.User.findOne(req.body.name)
             .populate('posts')
@@ -14,4 +14,4 @@ const show = async (req, res) => {
         console.log(error)
     }
 }
-module.exports = show
+module.exports = showUser
