@@ -36,11 +36,10 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
     try {
-        const updatedPost = await db.Post.findOneAndUpdate({
-            songId: req.params.songId
-        },
-            req.body,
-            { new: true })
+        const updatedPost = await db.Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        if (!updatedPost) return await res.json({
+            message: 'No post with that ID'
+        })
         await res.json(updatedPost)
     } catch (error) {
         console.log(error)
