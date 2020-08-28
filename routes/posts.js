@@ -5,6 +5,6 @@ router.get('/', ctrl.posts.index)
 router.get('/:id', ctrl.posts.show)
 router.post('/:id', ctrl.posts.create)
 router.delete('/:songId', ctrl.posts.destroy)
-router.put('/:songId', ctrl.posts.update)
+router.put('/:id', ctrl.posts.update)
 
 module.exports = router
