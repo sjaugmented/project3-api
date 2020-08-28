@@ -3,10 +3,10 @@ const Schema = mongoose.Schema
 
 const PostSchema = new Schema({
     songId:{type: String, unique: true},
-    songName: String, //Spotify songId
-    albumName: String, // Spotfify Id
-    albumArt: String, //??
-    artist: String, //Spotify id
+    songName: String, //
+    albumName: String, //
+    albumArt: String, //
+    artist: String, //
     votes: {
         type: Number
     }, 
