@@ -30,6 +30,19 @@ const create = async (req, res) => {
     }
 }
 
+const update = async (req, res) => {
+    try {
+        const updatedPost = await db.Post.findOneAndUpdate({
+            songId: req.params.songId
+        },
+            req.body,
+            { new: true })
+        await res.json(updatedPost)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const show = async (req, res) => {
     try {
         const foundPost = await db.Post.findById(req.params.id)
@@ -77,5 +90,5 @@ const destroy = async (req, res) => {
 }
 
 module.exports = {
-    index, create, show, destroy
+    index, create, update, show, destroy
 }
