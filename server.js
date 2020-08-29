@@ -19,9 +19,9 @@ app.use(express.json())
 
 // CORS
 app.use(cors({
-    origin: ['https://spotify-us/herokuapp.com/api/v1'],
+    origin: ['https://spotify-us/herokuapp.com'],
     credentials: true,
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 200,
 }))
 
 // passport & sessions
@@ -30,7 +30,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
-        url: process.env.MONGODB_URI || "mongodb://localhost:27017/p3"
+        url: process.env.MONGODB_URI
     }),
     cookie: {maxAge: 1000 * 60 * 60 * 24}
 }))
