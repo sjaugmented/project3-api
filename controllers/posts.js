@@ -43,6 +43,7 @@ const update = async (req, res) => {
         })
         console.log('API updatedPost>>', updatedPost)
         await updatedPost.save()
+        await res.json({post: updatedPost})
     } catch (error) {
         console.log(error)
     }
