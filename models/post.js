@@ -15,7 +15,7 @@ const PostSchema = new Schema({
     },
     user: String,
     userSpotId: String,
-    pending: Boolean //Spotify user Id
+    pending: Boolean
 })
 
 const Post = mongoose.model('Post', PostSchema)
