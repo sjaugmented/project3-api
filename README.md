@@ -8,4 +8,4 @@ When a user clicks on a playlist, that opens the Playlist component where they w
 
 ## Nothing new, right? But wait!
 
-If a user has a song they feel would be a good fit for the playlist, there will be a Suggest Song function. Users can 
+If a user has a song they feel would be a good fit for the playlist, there will be a Suggest Song function. Users can search Spotify from our app for songs, artists, albums, then click the song they want and it will go into a Pending Songs component where it will wait for upvotes. If it receives enough upvotes from the community within a certain amount of time, then it joins the playlist proper.

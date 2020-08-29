@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const PostSchema = new Schema({
-    songId:{type: String, unique: true},
-    songName: String, //Spotify songId
-    albumName: String, // Spotfify Id
-    albumArt: String, //??
-    artist: String, //Spotify id
+    songId:{type: String},
+    songName: String,
+    albumName: String,
+    albumArt: String, 
+    artist: String,
     votes: {
         type: Number
     }, 
@@ -15,7 +15,7 @@ const PostSchema = new Schema({
     },
     user: String,
     userSpotId: String,
-    pending: Boolean //Spotify user Id
+    pending: Boolean
 })
 
 const Post = mongoose.model('Post', PostSchema)
