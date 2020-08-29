@@ -10,7 +10,7 @@ const callback = (req, res) => {
 
 const logout = (req, res) => {
     req.logout()
-    res.redirect('http://localhost:3000/')
+    res.redirect('http://localhost:3000/#')
 }
 
 const verify = (req, res) => {
