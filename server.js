@@ -12,7 +12,6 @@ require('./passport/spotifyStrategy')
 
 
 //set up port
-const PORT = process.env.PORT
 const app = express()
 
 //#region MIDDLEWARE
@@ -46,6 +45,6 @@ app.use('/api/v1/posts', routes.posts)
 app.use('/api/v1/users', routes.users)
 app.use('/api/v1/auth', routes.spotify)
 
-app.listen(PORT, () => {
-    console.log(`We're in ${PORT}, lets do this`)
+app.listen(process.env.PORT || 3001, () => {
+    console.log(`We're in ${process.env.PORT}, lets do this`)
 })

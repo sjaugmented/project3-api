@@ -1,7 +1,7 @@
 require('dotenv').config()
 const mongoose = require('mongoose');
 
-const connectionString = process.env.DATABASE_URL
+const connectionString = process.env.MONGODB_URI || "mongodb://localhost/p3"
 const configOptions = {
     useNewUrlParser: true,
     useCreateIndex: true,
