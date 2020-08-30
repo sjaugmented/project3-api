@@ -19,21 +19,21 @@ app.use(express.json())
 
 // CORS
 app.use(cors({
-    origin: ['*'],
+    origin: ['https://spotify-us/herokuapp.com/'],
     credentials: true,
     optionsSuccessStatus: 200,
 }))
 // do I need this below?
-// app.use((req, res, next) => {
-//     res.setHeader("Access-Control-Allow-Origin", "https://spotify-us.herokuapp.com/static/js");
-//     res.setHeader("Vary", "Origin")
-//     res.setHeader(
-//         "Access-Control-Allow-Headers",
-//         "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-//     );
-//     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//     next();
-// });
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Vary", "Origin")
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    next();
+});
 
 // passport & sessions
 app.use(session({
