@@ -25,12 +25,10 @@ app.use(cors({
 }))
 // do I need this below?
 app.use((req, res, next) => {
-    // res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "https://spotify-us.herokuapp.com/static/js");
     res.setHeader("Vary", "Origin")
     res.setHeader(
-        "Access-Control-Allow-Origin",
         "Access-Control-Allow-Headers",
-        "Access-Control-Allow-Credentials",
         "Origin, X-Requested-With, Content-Type, Accept, Authorization"
     );
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
