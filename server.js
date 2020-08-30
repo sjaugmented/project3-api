@@ -18,7 +18,11 @@ const app = express()
 app.use(express.json())
 
 // CORS
-app.use(cors())
+app.use(cors({
+    origin: ['https://spotify-us/herokuapp.com'],
+    credentials: true,
+    optionsSuccessStatus: 200,
+}))
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "https://spotify-us.herokuapp.com/");
