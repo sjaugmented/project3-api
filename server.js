@@ -19,7 +19,7 @@ app.use(express.json())
 
 // CORS
 app.use(cors({
-    origin: ['https://spotify-us/herokuapp.com'],
+    origin: ['https://spotify-us/herokuapp.com/'],
     credentials: true,
     optionsSuccessStatus: 200,
 }))
