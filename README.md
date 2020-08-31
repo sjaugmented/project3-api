@@ -1,4 +1,4 @@
-# PLAYlists
+# Vote-Ify
 
 Something that's been missing from music streaming services is the ability not just to have public playlists, but to allow other users to contribute to those playlists. PLAYlists fixes this problem by using the Spotify API to create curated playlists that the community is able to add to.
 
