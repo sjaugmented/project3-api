@@ -42,6 +42,7 @@ We almost got voting implemented the way we had hoped, but because of the way th
 
 Other stretch goals we weren't able to hit: 
 
+- mobile first styling - we didn't have time
 - better integration of React Spring and animations
 - would have loved to have the header image be a music visualizer
 - sorting on the playlist page - by song name, artist, album, date added, etc
