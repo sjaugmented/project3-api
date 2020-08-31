@@ -1,5 +1,5 @@
 const db = require('../models')
-const redirect = 'https://spotify-us.herokuapp.com/'
+const redirect = 'http://localhost:3000/'
 
 const login = (req, res) => {
     // The request will be redirected to spotify for authentication, so this function will not be called.
