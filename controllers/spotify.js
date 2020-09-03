@@ -1,5 +1,5 @@
 const db = require('../models')
-const redirect = 'http://localhost:3000/'
+const redirect = process.env.LOCAL_CLIENT
 
 const login = (req, res) => {
     // The request will be redirected to spotify for authentication, so this function will not be called.

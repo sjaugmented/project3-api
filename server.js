@@ -5,12 +5,8 @@ const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
-
-
 require('./passport/spotifyStrategy')
 
-
-//set up port
 const app = express()
 
 //#region MIDDLEWARE
@@ -19,13 +15,14 @@ app.use(express.json())
 
 // CORS
 app.use(cors({
-    origin: ['https://spotify-us.herokuapp.com/'],
+    origin: [process.env.LOCAL_CLIENT],
     credentials: true,
     optionsSuccessStatus: 200,
 }))
+
 // do I need this below?
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://spotify-us.herokuapp.com/");
+    res.setHeader("Access-Control-Allow-Origin", process.env.LOCAL_CLIENT);
     res.setHeader("Vary", "Origin")
     res.setHeader(
         "Access-Control-Allow-Headers",
