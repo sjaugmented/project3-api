@@ -1,6 +1,6 @@
 # Vote-Ify
 
-[Check it out here.](https://spotify-us.herokuapp.com/)
+[Check it out here.](https://vote-ify.herokuapp.com/)
 
 [The client repo is here.](https://github.com/sjaugmented/project3-client)
 
