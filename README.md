@@ -4,7 +4,7 @@
 
 [The client repo is here.](https://github.com/sjaugmented/project3-client)
 
-Something that's been missing from music streaming services is the ability not just to have public playlists, but to allow other users to contribute to those playlists. PLAYlists fixes this problem by using the Spotify API to create curated playlists that the community is able to add to.
+Something that's been missing from music streaming services is the ability not just to have public playlists, but to allow other users to contribute to those playlists. **Vote-ify** fixes this problem by using the Spotify API to create curated playlists that the community is able to add to.
 
 Upon visiting the site, users are prompted to sign-in using their Spotify account. Once signed in, users can navigate through the playlists on the site. (Initially - to keep things simple - playlists will be based around genres: Hip-Hop, Pop, R&B, Rock, etc.)
 
