@@ -15,7 +15,7 @@ app.use(express.json())
 
 // CORS
 app.use(cors({
-    origin: [process.env.HEROKU_CLIENT],
+    origin: [process.env.HEROKU_CLIEN],
     credentials: true,
     optionsSuccessStatus: 200,
 }))
