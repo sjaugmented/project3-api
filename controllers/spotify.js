@@ -15,7 +15,6 @@ const logout = (req, res) => {
 }
 
 const verify = (req, res) => {
-    console.log('verifying:', req.user)
     if (req.user) {
         res.json({
             spotifyId: req.user.spotifyId,

@@ -1,6 +1,6 @@
 # Vote-Ify
 
-[Check it out here.](https://vote-ify.herokuapp.com/)
+[Check it out here.](https://vote-ify.herokuapp.com/) (Sometimes it's slow to load or needs a refresh.)
 
 [The client repo is here.](https://github.com/sjaugmented/project3-client)
 

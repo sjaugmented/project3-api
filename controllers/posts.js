@@ -36,12 +36,10 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
     try {
-        console.log('body>>', req.body)
         const updatedPost = await db.Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
         if (!updatedPost) return await res.json({
             message: 'No post with that ID'
         })
-        console.log('API updatedPost>>', updatedPost)
         await updatedPost.save()
         await res.json({post: updatedPost})
     } catch (error) {
