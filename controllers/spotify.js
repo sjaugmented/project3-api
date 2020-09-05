@@ -1,17 +1,17 @@
 const db = require('../models')
-const redirect = process.env.LOCAL_CLIENT
+const redirect = process.env.HEROKU_CLIENT
 
 const login = (req, res) => {
     // The request will be redirected to spotify for authentication, so this function will not be called.
 }
 const callback = (req, res) => {
     // Successful authentication, redirect home.
-    res.redirect(redirect)
+    res.redirect(`${redirect}/redirect`)
 }
 
 const logout = (req, res) => {
     req.logout()
-    res.redirect(redirect)
+    res.redirect(`${redirect}/redirect`)
 }
 
 const verify = (req, res) => {
