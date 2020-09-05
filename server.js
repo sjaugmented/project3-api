@@ -15,22 +15,10 @@ app.use(express.json())
 
 // CORS
 app.use(cors({
-    origin: [process.env.LOCAL_CLIENT],
+    origin: [process.env.HEROKU_CLIENT],
     credentials: true,
     optionsSuccessStatus: 200,
 }))
-
-// do I need this below?
-// app.use((req, res, next) => {
-//     res.setHeader("Access-Control-Allow-Origin", process.env.LOCAL_CLIENT);
-//     res.setHeader("Vary", "Origin")
-//     res.setHeader(
-//         "Access-Control-Allow-Headers",
-//         "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-//     );
-//     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//     next();
-// });
 
 // passport & sessions
 app.use(session({
