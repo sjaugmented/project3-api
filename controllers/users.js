@@ -2,7 +2,9 @@ const db = require('../models')
 
 const show = async (req, res) => {
     try {
-        const foundUser = await db.User.findOne(req.body.spotifyId)
+        const foundUser = await db.User.findOne({
+            spotifyId: req.params.id
+        })
             .populate('posts')
         if (!foundUser) return res.json({
             message: 'none found'
