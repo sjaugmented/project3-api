@@ -17,4 +17,4 @@ const show = async (req, res) => {
     }
 }
 
-module.exports = {show}
+module.exports = { show }
