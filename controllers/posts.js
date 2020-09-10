@@ -53,7 +53,7 @@ const show = async (req, res) => {
         if (!foundPost) return await res.json({
             message: 'No post with that ID'
         })
-        await res.json({post: foundPost})
+        await res.json(foundPost)
     } catch (error) {
         console.log(error)
     }
