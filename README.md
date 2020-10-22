@@ -42,8 +42,6 @@ If a user has a song they feel would be a good fit for the playlist, there will 
 
 Overall, we had a lot of struggles with Spotify. It might be straight-forward for programmers with more than 9 weeks experience, but we definitely had some hurdles to overcome. Mainly working with access and refresh tokens. Still haven't exactly mastered those, but we were able to get the app to a place that works. Minimally.
 
-We almost got voting implemented the way we had hoped, but because of the way the component reloads after each vote, it's possible to vote ad infinitum, unlike how we wanted it to work: one user, one vote, per song. But with a little more time, we'll get that one figured out.
-
 Other stretch goals we weren't able to hit: 
 
 - mobile first styling - we didn't have time
